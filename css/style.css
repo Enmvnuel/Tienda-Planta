@@ -172,15 +172,16 @@ header p {
     background-color: #ffffff;
     border-radius: 16px;
     box-shadow: 0 4px 16px rgba(27, 94, 32, 0.1);
-    margin: 10px;
-    width: 280px;
-    padding: 20px;
+    margin: 18px;
+    width: 300px; 
+    min-height: 520px; 
+    padding: 28px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+
 }
 
 .product-card:hover {
@@ -464,3 +465,4 @@ footer.highlight-fade {
     filter: brightness(1) drop-shadow(0 0 0 #66bb6a);
     transition: box-shadow 1.2s cubic-bezier(.4,0,.2,1), filter 1.2s cubic-bezier(.4,0,.2,1);
 }
+
