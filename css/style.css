@@ -177,6 +177,10 @@ header p {
     padding: 20px;
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .product-card:hover {
@@ -205,9 +209,10 @@ header p {
 }
 
 .product-description {
+    flex-grow: 1;
+    margin-bottom: 20px;
     color: #666;
     font-size: 0.95em;
-    margin-bottom: 20px;
 }
 
 .buy-button {
@@ -219,6 +224,15 @@ header p {
     cursor: pointer;
     font-size: 1em;
     transition: background 0.3s, transform 0.3s;
+    margin-top: auto;         
+    align-self: stretch;       
+    width: 100%;               
+    box-sizing: border-box;    
+    min-height: 48px;          
+    font-weight: bold;          
+    letter-spacing: 1px;        
+    display: block;
+    text-align: center;
 }
 
 .buy-button:hover {
@@ -295,7 +309,6 @@ footer p {
     position: relative;
     font-family: "Inter", sans-serif;
     margin: 35px 0 80px 0;
-    /* padding-bottom: 60px; */
 }
 
 .logos h2 {
@@ -376,4 +389,78 @@ footer p {
 #logo-h2 span {
     display: inline;
     padding: 0;
+}
+
+.falling-leaf {
+    position: fixed;
+    top: -40px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fall-leaf linear forwards;
+}
+
+@keyframes fall-leaf {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0.7;
+    }
+}
+
+.main-content,
+header {
+    opacity: 0;
+}
+
+#plant-loader {
+    position: fixed;
+    z-index: 99999;
+    background: #e8f5e9;
+    width: 100vw;
+    height: 100vh;
+    top: 0; left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.7s;
+}
+
+#plant-stem {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 1s cubic-bezier(.5,1.7,.5,1);
+}
+#plant-leaf-left,
+#plant-leaf-right,
+#plant-leaf-top {
+    opacity: 0;
+    transform: scale(0.2);
+    transition: 
+        opacity 0.4s 0.8s,
+        transform 0.5s 0.8s cubic-bezier(.5,1.7,.5,1);
+}
+#plant-loader.grow #plant-stem {
+    transform: scaleY(1);
+}
+#plant-loader.grow #plant-leaf-left,
+#plant-loader.grow #plant-leaf-right,
+#plant-loader.grow #plant-leaf-top {
+    opacity: 1;
+    transform: scale(1);
+}
+#plant-loader.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+footer.highlight {
+    box-shadow: 0 0 0 10px #43a047, 0 0 40px 20px #a5d6a7, 0 0 80px 32px #fff;
+    filter: brightness(1.5) drop-shadow(0 0 16px #66bb6a);
+    transition: box-shadow 0.2s, filter 0.2s;
+    z-index: 1001;
+    position: relative;
+}
+footer.highlight-fade {
+    box-shadow: 0 0 0 0 #43a047, 0 0 0 0 #a5d6a7, 0 0 0 0 #fff;
+    filter: brightness(1) drop-shadow(0 0 0 #66bb6a);
+    transition: box-shadow 1.2s cubic-bezier(.4,0,.2,1), filter 1.2s cubic-bezier(.4,0,.2,1);
 }
